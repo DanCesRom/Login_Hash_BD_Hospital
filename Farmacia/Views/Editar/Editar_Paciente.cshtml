@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "Editar_Paciente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Editar Paciente";
+}
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+
+
+<form action="/Editar/UpdatePaciente" method="post" id="editPaciente">
+
+    <div class="mb-3">
+        <label class="form-label">Id Paciente</label>
+        <input type="number" name="idpaciente_txt" value="@Request.QueryString["id"]" class="form-control" readonly />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Cedula</label>
+        <input type="text" name="cedula_txt" class="form-control" value="@Request.QueryString["cedula"]" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Nombre</label>
+        <input type="text" name="nombre_txt" class="form-control" value="@Request.QueryString["nombre"]" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Fecha de Nacimiento</label>
+        <input type="date" name="fechanacimiento_txt" value="@Request.QueryString["nacimiento"]" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Genero</label>
+        <input type="text" name="genero_txt" value="@Request.QueryString["genero"]" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Direccion</label>
+        <input type="text" name="direccion_txt" value="@Request.QueryString["direccion"]" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Telefono</label>
+        <input type="text" name="telefono_txt" value="@Request.QueryString["telefono"]" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Ocupacion</label>
+        <input type="text" name="ocupacion_txt" value="@Request.QueryString["ocupacion"]" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Estado Civil</label>
+        <input type="text" name="civil_txt" value="@Request.QueryString["civil"]" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Escolaridad</label>
+        <input type="text" name="escolaridad_txt" value="@Request.QueryString["escolaridad"]" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Procedencia</label>
+        <input type="text" name="procedencia_txt" value="@Request.QueryString["procedencia"]" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Status</label>
+        <input type="text" name="status_txt" value="@Request.QueryString["status"]" class="form-control" required />
+    </div>
+
+    <div class="flex-column">
+        <a href="https://localhost:44304/Consultar/Consultar_Paciente"> <btn class="btn btn-danger" style="background:Red" required>Cancelar</btn></a>
+        <button type="submit" for="editPaciente" class="btn btn-success">Update</button>
+    </div>
+
+
+</form>
+
+
+
+
+
+

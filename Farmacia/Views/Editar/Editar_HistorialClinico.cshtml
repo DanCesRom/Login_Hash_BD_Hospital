@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "Editar_HistorialClinico";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Editar Historial Clinico";
+}
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+
+
+<form action="/Editar/UpdateHistorialClinico" method="post" id="editHistorialClinico">
+
+
+    <div class="mb-3">
+        <label class="form-label">Id Historial Clinico</label>
+        <input type="number" name="idhistorialclinico_txt" value="@Request.QueryString["id"]" class="form-control" readonly />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Motivo Consulta</label>
+        <input type="text" name="motivoconsulta_txt" value="@Request.QueryString["motivo"]" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Historial Enfermedad Actual</label>
+        <input type="text" name="historialenfermedadactual_txt" class="form-control" value="@Request.QueryString["enfermedad"]" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Antecedentes Patologicos Familiares</label>
+        <input type="text" name="antecedentespatologicosfamiliares_txt" class="form-control" value="@Request.QueryString["familiar"]" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Antecedentes Patologicos Personales</label>
+        <input type="text" name="antecedentespatologicospersonales_txt" value="@Request.QueryString["personal"]" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Habitos Toxicos</label>
+        <input type="text" name="habitostoxicos_txt" value="@Request.QueryString["habitos"]" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Diagnostico</label>
+        <input type="text" name="diagnostico_txt" value="@Request.QueryString["diagnostico"]" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Tratamiento</label>
+        <input type="text" name="tratamiento_txt" value="@Request.QueryString["tratamiento"]" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Seguimiento</label>
+        <input type="text" name="seguimiento_txt" value="@Request.QueryString["seguimiento"]" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Status</label>
+        <input type="text" name="status_txt" value="@Request.QueryString["status"]" class="form-control" required />
+    </div>
+
+    <div class="flex-column">
+        <a href="https://localhost:44304/Consultar/Consultar_HistorialMedico"> <btn class="btn btn-danger" style="background:Red" required>Cancelar</btn></a>
+        <button type="submit" for="editHistorialClinico" class="btn btn-success">Update</button>
+    </div>
+
+
+</form>
+
+
+
+
+
+

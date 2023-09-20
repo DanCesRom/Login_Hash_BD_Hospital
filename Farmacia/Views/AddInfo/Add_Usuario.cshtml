@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Add_Usuario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string NivelAcceso = Session["NivelAccesso"] as string;
+}
+
+
+
+
+
+@if (NivelAcceso == "0")
+{
+    <h2>Agregar Usuario</h2>
+    <div class="col-lg-8">
+        <div class="panel panel-default" id="panelUsuario">
+            <div class="panel-heading">Agregar Usuario:</div>
+            <hr style="width:17%;text-align:left;margin-left:0">
+            <div class="panel-body">
+                <div class="row">
+                    @*Campos de Textos y Registros*@
+                </div>
+            </div>
+
+
+            <form action="/AddInfo/registrarUsuario/" method="post" id="formUsuario">
+                <a>Nombre del Usuario<input type="text" name="nombreusuario_txt" id="nombreusuario.txt" class="form-control" formmethod="post" required></a> <br />
+                <a>Clave<input type="text" name="claveusuario_txt" id="claveusuario.txt" class="form-control" formmethod="post" required></a> <br />
+
+                <a href="https://localhost:44304/Home/Eleccion"> <btn class="btn btn-danger" style="background:Red" required>Cancelar</btn></a>
+                <input for="formUsuario" type="submit" value="Agregar" class="btn btn-success glyphicon glyphicon-plus" style="background: green; margin-left: 50px"> <br /> <br />
+            </form>
+
+
+        </div>
+    </div>
+}
+
+else
+{
+    <h1>Acceso Restringido</h1>
+    <p>No tienes permiso para ver esta página.</p>
+}
+
+

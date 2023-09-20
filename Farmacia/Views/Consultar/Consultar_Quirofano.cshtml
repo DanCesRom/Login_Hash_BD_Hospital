@@ -1,0 +1,88 @@
+﻿@model List<CapaDatos.Database.Quirofano>
+@{
+    ViewBag.Title = "Consultar_Quirofano";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Consultar Quirofanos";
+}
+
+
+@if (TempData["QuirofanoRegisterMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["QuirofanoRegisterMessage"]
+    </div>
+}
+
+@if (TempData["QuirofanoRegisterErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["QuirofanoRegisterErrorMessage"]
+    </div>
+}
+
+@if (TempData["QuirofanoUpdateMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["QuirofanoUpdateMessage"]
+    </div>
+}
+
+@if (TempData["QuirofanoDeleteMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["QuirofanoDeleteMessage"]
+    </div>
+}
+
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+<p>Total de Historial Clinico: @Model.Count()</p>
+
+
+<a href="https://localhost:44304/AddInfo/Add_Quirofano"> <btn class="btn" style="color:white;  background: black">Agregar Quirofano</btn> </a>
+<br />
+<br />
+
+<form action="/Eliminar/DelQuirofano/" method="post" id="formUser">
+    <table class="table table-responsive table-hover table-bordered">
+        <thead>
+            <tr class="table-active">
+                <th>ID Quirofano</th>
+                <th>Nombre Quirofano</th>
+                <th>Status</th>
+                <th>Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var quirofano in Model)
+                {
+                    <tr>
+                        <td>@quirofano.QuirofanoID</td>
+                        <td>@quirofano.NombreQuirofano</td>
+                        <td>@quirofano.Status</td>
+
+                        <td>
+                            <div class="btn-group-lg btn-group-sm">
+                                <a href="/Editar/Editar_Quirofano?id=@quirofano.QuirofanoID&nombre=@quirofano.NombreQuirofano&status=@quirofano.Status" class="btn btn-primary">Edit</a>
+                                <button type="submit" name="id" value="@quirofano.QuirofanoID" class="btn btn-danger" style="margin-left:10px">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="6">
+                        <div>
+                            No Users Available at this moment!
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>

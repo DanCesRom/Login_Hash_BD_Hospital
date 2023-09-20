@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Editar_Quirofano";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Editar Quirofano";
+}
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+
+
+<form action="/Editar/UpdateQuirofano" method="post" id="editQuirofano">
+
+    <div class="mb-3">
+        <label class="form-label">Id Anestesiologo</label>
+        <input type="number" name="idquirofano_txt" value="@Request.QueryString["id"]" class="form-control" readonly />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Nombre</label>
+        <input type="text" name="nombre_txt" class="form-control" value="@Request.QueryString["nombre"]" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Status</label>
+        <input type="text" name="status_txt" value="@Request.QueryString["status"]" class="form-control" required />
+    </div>
+
+    <div class="flex-column">
+        <a href="https://localhost:44304/Consultar/Consultar_Quirofano"> <btn class="btn btn-danger" style="background:Red" required>Cancelar</btn></a>
+        <button type="submit" for="editQuirofano" class="btn btn-success">Update</button>
+    </div>
+
+
+</form>
+
+
+
+
+
+

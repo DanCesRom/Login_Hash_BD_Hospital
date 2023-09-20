@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Add_Asistente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Agregar Asistente</h2>
+
+<div class="col-lg-8">
+    <div class="panel panel-default" id="panelAsistente">
+        <div class="panel-heading">Agregar Asistente:</div>
+        <hr style="width:17%;text-align:left;margin-left:0">
+        <div class="panel-body">
+            <div class="row">
+                @*Campos de Textos y Registros*@
+            </div>
+        </div>
+
+
+        <form action="/AddInfo/registrarAsistente/" method="post" id="formAsistente">
+            <a>Cedula<input type="text" name="ceduladelmedico_txt" id="ceduladelmedico.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>Nombre del Medico<input type="text" name="nombredelmedico_txt" id="nombredelmedico.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>Especialidad<input type="text" name="especialidaddelmedico_txt" id="especialidaddelmedico.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>Status<input type="text" name="statusdelmedico_txt" id="statusdelmedico.txt" class="form-control" formmethod="post" value="A" readonly required></a> <br />
+
+            <a href="https://localhost:44304/Consultar/Consultar_Asistente"> <btn class="btn btn-danger" style="background:Red" required>Cancelar</btn></a>
+            <input for="formAsistente" type="submit" value="Agregar" class="btn btn-success glyphicon glyphicon-plus" style="background: green; margin-left: 50px"> <br /> <br />
+        </form>
+
+
+    </div>
+</div>
+
+

@@ -1,0 +1,107 @@
+﻿@model List<CapaDatos.Database.Paciente>
+@{
+    ViewBag.Title = "Consultar_Paciente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Consultar Pacientes";
+}
+
+@if (TempData["PacienteRegisterMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["PacienteRegisterMessage"]
+    </div>
+}
+
+@if (TempData["PacienteRegisterErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["PacienteRegisterErrorMessage"]
+    </div>
+}
+
+@if (TempData["PacienteUpdateMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["PacienteUpdateMessage"]
+    </div>
+}
+
+@if (TempData["PacienteDeleteMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["PacienteDeleteMessage"]
+    </div>
+}
+
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+<p>Total de Historial Clinico: @Model.Count()</p>
+
+
+<a href="https://localhost:44304/AddInfo/Add_Paciente"> <btn class="btn" style="color:white;  background: black">Agregar Paciente</btn> </a>
+<br />
+<br />
+
+<form action="/Eliminar/DelPaciente/" method="post" id="formUser">
+    <table class="table table-responsive table-hover table-bordered">
+        <thead>
+            <tr class="table-active">
+                <th>ID Paciente</th>
+                <th>Nombre</th>
+                <th>Cedula</th>
+                <th>Historial Clinico</th>
+                <th>Fecha de Nacimiento</th>
+                <th>Genero</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+                <th>Ocupacion</th>
+                <th>Estado Civil</th>
+                <th>Escolaridad</th>
+                <th>Precedencia</th>
+                <th>Status</th>
+                <th>Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var paciente in Model)
+                {
+                    <tr>
+                        <td>@paciente.PacienteID</td>
+                        <td>@paciente.Nombre</td>
+                        <td>@paciente.Cedula</td>
+                        <td>@paciente.HistorialClinicoID</td>
+                        <td>@paciente.FechaNacimiento</td>
+                        <td>@paciente.Genero</td>
+                        <td>@paciente.Direccion</td>
+                        <td>@paciente.Telefono</td>
+                        <td>@paciente.Ocupacion</td>
+                        <td>@paciente.EstadoCivil</td>
+                        <td>@paciente.Escolaridad</td>
+                        <td>@paciente.Procedencia</td>
+                        <td>@paciente.Status</td>
+
+                        <td>
+                            <div class="btn-group-lg btn-group-sm">
+                                <a href="/Editar/Editar_Paciente?id=@paciente.PacienteID&nombre=@paciente.Nombre&cedula=@paciente.Cedula&historial=@paciente.HistorialClinico&nacimiento=@paciente.FechaNacimiento&genero=@paciente.Genero&direccion=@paciente.Direccion&telefono=@paciente.Telefono&ocupacion=@paciente.Ocupacion&civil=@paciente.EstadoCivil&escolaridad=@paciente.Escolaridad&procedencia=@paciente.Procedencia&status=@paciente.Status" class="btn btn-primary">Edit</a>
+                                <button type="submit" name="id" value="@paciente.PacienteID" class="btn btn-danger" style="margin-left:10px">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="6">
+                        <div>
+                            No Users Available at this moment!
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>

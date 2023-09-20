@@ -1,0 +1,102 @@
+﻿@model List<CapaDatos.Database.HistorialClinico>
+
+@{
+    ViewBag.Title = "Consultar_HistorialClinico";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Consultar Historial Clinico";
+}
+
+@if (TempData["HistorialRegisterMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["HistorialRegisterMessage"]
+    </div>
+}
+
+@if (TempData["HistorialRegisterErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["HistorialRegisterErrorMessage"]
+    </div>
+}
+
+@if (TempData["HistorialClinicoUpdateMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["HistorialClinicoUpdateMessage"]
+    </div>
+}
+
+@if (TempData["HistorialClinicoDeleteMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["HistorialClinicoDeleteMessage"]
+    </div>
+}
+
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+<p>Total de Historial Clinico: @Model.Count()</p>
+
+
+<a href="https://localhost:44304/AddInfo/Add_HistorialClinico"> <btn class="btn" style="color:white;  background: black">Agregar Historial Clinico</btn> </a>
+<br />
+<br />
+
+<form action="/Eliminar/DelHistorialClinico/" method="post" id="formUser">
+    <table class="table table-responsive table-hover table-bordered">
+        <thead>
+            <tr class="table-active">
+                <th>ID Historial Clinico</th>
+                <th>Motivo Consulta</th>
+                <th>Historial Enfermedad Actual</th>
+                <th>Antecedentes Patologicos Familiares</th>
+                <th>Antecedentes Patologicos Personales</th>
+                <th>Habitos Toxicos</th>
+                <th>Diagnostico</th>
+                <th>Tratamiento</th>
+                <th>Seguimiento</th>
+                <th>Status</th>
+                <th>Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var historialClinico in Model)
+                {
+                    <tr>
+                        <td>@historialClinico.HistorialClinicoID</td>
+                        <td>@historialClinico.MotivoConsulta</td>
+                        <td>@historialClinico.HistoriaEnfermedadActual</td>
+                        <td>@historialClinico.AntecedentesPatologicosFamiliares</td>
+                        <td>@historialClinico.AntecedentesPatologicosPersonales</td>
+                        <td>@historialClinico.HabitosToxicos</td>
+                        <td>@historialClinico.Diagnostico</td>
+                        <td>@historialClinico.Tratamiento</td>
+                        <td>@historialClinico.Seguimiento</td>
+                        <td>@historialClinico.Status</td>
+
+                        <td>
+                            <div class="btn-group-lg btn-group-sm">
+                                <a href="/Editar/Editar_HistorialClinico?id=@historialClinico.HistorialClinicoID&motivo=@historialClinico.MotivoConsulta&enfermedad=@historialClinico.HistoriaEnfermedadActual&familiar=@historialClinico.AntecedentesPatologicosFamiliares&personal=@historialClinico.AntecedentesPatologicosPersonales&habitos=@historialClinico.HabitosToxicos&diagnostico=@historialClinico.Diagnostico&tratamiento=@historialClinico.Tratamiento&seguimiento=@historialClinico.Seguimiento&status=@historialClinico.Status" class="btn btn-primary">Edit</a>
+                                <button type="submit" name="id" value="@historialClinico.HistorialClinicoID" class="btn btn-danger" style="margin-left:10px">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="6">
+                        <div>
+                            No Users Available at this moment!
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>

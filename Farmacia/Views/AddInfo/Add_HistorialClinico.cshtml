@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Add_HistorialClinico";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Agregar Historial Clinico</h2>
+
+<div class="col-lg-8">
+    <div class="panel panel-default" id="panelAsistente">
+        <div class="panel-heading">Agregar Asistente:</div>
+        <hr style="width:17%;text-align:left;margin-left:0">
+        <div class="panel-body">
+            <div class="row">
+                @*Campos de Textos y Registros*@
+            </div>
+        </div>
+
+        <form action="/AddInfo/registrarHistorialClinico/" method="post" id="formHistorialClinico">
+            <a>Motivo Consulta<input type="text" name="motivoconsulta_txt" id="motivoconsulta.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>Historial Enfermedad Actual<input type="text" name="historialenfermedadactual_txt" id="historialenfermedadactual.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>Antecedentes Patologicos Familiares<input type="text" name="antecedentespatologicosfamiliares_txt" id="antecedentespatologicosfamiliares.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>Antecedentes Patologicos Personales<input type="text" name="antecedentespatologicospersonales_txt" id="antecedentespatologicospersonales.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>Habitos Toxicos<input type="text" name="habitostoxicos_txt" id="habitostoxicos.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>Diagnostico<input type="text" name="diagnostico_txt" id="diagnostico.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>Tratamiento<input type="text" name="tratamiento_txt" id="tratamiento.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>Seguimiento<input type="text" name="seguimiento_txt" id="seguimiento.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>Status<input type="text" name="statusdelmedico_txt" id="statusdelmedico.txt" class="form-control" formmethod="post" value="A" readonly required></a> <br />
+
+            <a href="https://localhost:44304/Consultar/Consultar_HistorialClinico"> <btn class="btn btn-danger" style="background:Red" required>Cancelar</btn></a>
+            <input for="formHistorialClinico" type="submit" value="Agregar" class="btn btn-success glyphicon glyphicon-plus" style="background: green; margin-left: 50px"> <br /> <br />
+        </form>
+
+
+    </div>
+</div>

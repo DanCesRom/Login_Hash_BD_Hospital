@@ -1,0 +1,76 @@
+﻿@{
+    string NombreUsuario = Session["NombreUsuario"] as string;
+    string NivelAcceso = Session["NivelAccesso"] as string;
+}
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom border-dark">
+        <div class="container">
+            <a class="navbar-brand" href="@Url.Action("Login", "Seguridad", new { area = "" })">
+                <img src="https://cdn.discordapp.com/attachments/480216222592532502/1139295146140246087/Temporal_Beta_Test.jpeg" alt="Farmacia Helse Safe" style="max-height: 180px; max-width: 340px;" />
+            </a>
+
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                </ul>
+            </div>
+            <a class="collapse navbar-collapse d-sm-inline-flex justify-content-between" style="text-decoration: none; color: black;">
+                <h1 style="font-weight: bold; font-size: 20px;">
+                    Sistema de Gestión de Historiales Clínicos y Programación de Cirugías
+                </h1>
+            </a>
+
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1" style="font-weight:bold ">
+                    <li>@Html.ActionLink("Consulta", "Eleccion", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                </ul>
+            </div>
+
+            @if (!string.IsNullOrEmpty(NombreUsuario))
+            {
+                <form action="@Url.Action("Logoutadm", "Seguridad")" method="post">
+                    <a style="color:black; font-weight:bold; margin-left:10px">@NombreUsuario</a>
+                    <input style="color:black; background-color:transparent; font-weight:bold; border:revert " type="submit" value="Logout" />
+                </form>
+            }
+
+            else
+            {
+                <form action="@Url.Action("Login", "Seguridad")" method="post">
+                    <input style="color: black; background-color: transparent; font-weight: bold; margin-left:10px "  type="submit" value="Login" />
+                </form>
+            }
+
+
+
+        </div>
+
+    </nav>
+
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

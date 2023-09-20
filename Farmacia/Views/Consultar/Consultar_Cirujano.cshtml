@@ -1,0 +1,99 @@
+﻿@model List<CapaDatos.Database.Cirujano>
+
+@{
+    ViewBag.Title = "Consultar_Cirujano";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Consultar Cirujanos";
+}
+
+
+@if (TempData["CirujanoRegisterMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["CirujanoRegisterMessage"]
+    </div>
+}
+
+@if (TempData["CirujanoRegisterErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["CirujanoRegisterErrorMessage"]
+    </div>
+}
+
+@if (TempData["CirujanoUpdateMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["CirujanoUpdateMessage"]
+    </div>
+}
+
+@if (TempData["CirujanoDeleteMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["CirujanoDeleteMessage"]
+    </div>
+}
+
+
+
+
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+<p>Total de Cirujanos: @Model.Count()</p>
+
+
+<a href="https://localhost:44304/AddInfo/Add_Cirujano"> <btn class="btn" style="color:white;  background: black">Agregar Cirujano</btn> </a>
+<br />
+<br />
+
+<form action="/Eliminar/DelCirujano/" method="post" id="formUser">
+    <table class="table table-responsive table-hover table-bordered">
+        <thead>
+            <tr class="table-active">
+                <th>ID Cirujano</th>
+                <th>Cedula</th>
+                <th>Nombre del Medico</th>
+                <th>Especialidad</th>
+                <th>Status</th>
+                <th>Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @if (Model != null && Model.Any())
+            {
+                foreach (var cirujano in Model)
+                {
+                    <tr>
+                        <td>@cirujano.CirujanoID</td>
+                        <td>@cirujano.Cedula_Cirujano</td>
+                        <td>@cirujano.NombreMedico</td>
+                        <td>@cirujano.Especialidad</td>
+                        <td>@cirujano.Status</td>
+                        <td>
+                            <div class="btn-group-lg btn-group-sm">
+                                <a href="/Editar/Editar_Cirujano?id=@cirujano.CirujanoID&cedula=@cirujano.Cedula_Cirujano&nombre=@cirujano.NombreMedico&especialidad=@cirujano.Especialidad&status=@cirujano.Status" class="btn btn-primary">Edit</a>
+                                <button type="submit" name="id" value="@cirujano.CirujanoID" class="btn btn-danger" style="margin-left:10px">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                };
+            }
+
+            else
+            {
+                < tr >
+                < td colspan = "6" >
+                < div >
+                No Users Available at this moment!
+                </ div >
+                </ td >
+                </ tr >
+            }
+
+
+        </tbody>
+    </table>
+</form>

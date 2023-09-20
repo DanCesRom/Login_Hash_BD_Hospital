@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Eleccion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string NivelAcceso = Session["NivelAccesso"] as string;
+}
+
+@if (NivelAcceso == "1" || NivelAcceso == "0")
+{
+
+    <h2>Gestion de Tablas</h2>
+
+    <div class="col-lg-8">
+        <div class="panel panel-default" id="panelEleccion">
+            <div class="panel-heading">Tablas a Consultar:</div>
+            <hr style="width:17%;text-align:left;margin-left:0">
+            <div class="panel-body">
+                <div class="row">
+                    @*Campos de Textos y Registros*@
+                </div>
+            </div>
+
+            <div id="tblEleccion" class="table">
+
+                <a href="https://localhost:44304/Consultar/Consultar_Anestesiologo"> <btn class="btn" style="background: rgb(133, 193, 233)">Anestesiologos</btn> </a>          <br /> <br />
+                <a href="https://localhost:44304/Consultar/Consultar_Asistente"> <btn class="btn" style="background: rgb(133, 193, 233)">Asistentes</btn> </a>                  <br /> <br />
+                <a href="https://localhost:44304/Consultar/Consultar_Cirugia"> <btn class="btn" style="background: rgb(133, 193, 233)">Cirugias</btn> </a>                      <br /> <br />
+                <a href="https://localhost:44304/Consultar/Consultar_Cirujano"> <btn class="btn" style="background: rgb(133, 193, 233)">Cirujanos</btn> </a>                    <br /> <br />
+                <a href="https://localhost:44304/Consultar/Consultar_HistorialClinico"> <btn class="btn" style="background: rgb(133, 193, 233)">Historiales Medicos</btn> </a>  <br /> <br />
+                <a href="https://localhost:44304/Consultar/Consultar_Paciente"> <btn class="btn" style="background: rgb(133, 193, 233)">Pacientes</btn> </a>                    <br /> <br />
+                <a href="https://localhost:44304/Consultar/Consultar_Quirofano"> <btn class="btn" style="background: rgb(133, 193, 233)">Quirofanos</btn> </a>                  <br /> <br />
+
+            </div>
+        </div>
+    </div>
+}
+
+else
+{
+    <h1>Acceso Restringido</h1>
+    <p>No tienes permiso para ver esta página.</p>
+}
+

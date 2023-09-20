@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Add_Paciente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Agregar Paciente</h2>
+
+
+<div class="col-lg-8">
+    <div class="panel panel-default" id="panelPaciente">
+        <div class="panel-heading">Agregar Cirugia:</div>
+        <hr style="width:17%;text-align:left;margin-left:0">
+        <div class="panel-body">
+            <div class="row">
+                @*Campos de Textos y Registros*@
+            </div>
+        </div>
+
+
+        <form action="/AddInfo/registrarPaciente/" method="post" id="formPaciente">
+            <a>Cedula<input type="text" name="cedulapaciente_txt" id="cedulapaciente.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>ID Historial Clinico<input type="number" name="idhistorialclinico_txt" id="idhistorialclinico.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>Nombre<input type="text" name="nombrepaciente_txt" id="nombrepaciente.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>Fecha de Nacimiento<input type="date" name="fechadenacimiento_txt" id="fechadenacimiento.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>Genero<input type="text" name="genero_txt" id="genero.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>Direccion<input type="text" name="direccion_txt" id="direccion.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>Telefono<input type="text" name="telefono_txt" id="telefono.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>Ocupacion<input type="text" name="ocupacion_txt" id="ocupacion.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>Estado Civil<input type="text" name="estadocivil_txt" id="estadocivil.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>Escolaridad<input type="text" name="escolaridad_txt" id="escolaridad.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>Procedencia<input type="text" name="procedencia_txt" id="procedencia.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>Status<input type="text" name="status_txt" id="status.txt" class="form-control" formmethod="post" required></a> <br />
+
+            <a href="https://localhost:44304/Consultar/Consultar_Paciente"> <btn class="btn btn-danger" style="background:Red" required>Cancelar</btn></a>
+            <input for="formPaciente" type="submit" value="Agregar" class="btn btn-success glyphicon glyphicon-plus" style="background: green; margin-left: 50px"> <br /> <br />
+        </form>
+
+
+    </div>
+</div>
+
+

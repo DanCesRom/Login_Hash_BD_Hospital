@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Add_Cirugia";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Agregar Cirugia</h2>
+
+
+<div class="col-lg-8">
+    <div class="panel panel-default" id="panelAsistente">
+        <div class="panel-heading">Agregar Cirugia:</div>
+        <hr style="width:17%;text-align:left;margin-left:0">
+        <div class="panel-body">
+            <div class="row">
+                @*Campos de Textos y Registros*@
+            </div>
+        </div>
+
+
+        <form action="/AddInfo/registrarCirugia/" method="post" id="formCirugia">
+            <a>Fecha de Operacion<input type="datetime-local" name="horadeoperacion_txt" id="horadeoperacion.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>Cirugia Realizada<input type="text" name="cirugiarealizada_txt" id="cirugiarealizada.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>ID Historial Clinico<input type="number" name="idhistorialclinico_txt" id="idhistorialclinico.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>ID Quirofano<input type="number" min="1" name="idquirofano_txt" id="idquirofano.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>ID Cirujano<input type="number" min="1" name="idcirujano_txt" id="idcirujano.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>ID Asistente<input type="number" min="1" name="idasistente_txt" id="idasistente.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>ID Anestesiologo<input type="number" min="1" name="idanestesiologo_txt" id="idanestesiologo.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>Status<input type="text" name="statuscirugia_txt" id="statuscirugia_txt" class="form-control" formmethod="post" required></a> <br />
+
+            <a href="https://localhost:44304/Consultar/Consultar_Cirugia"> <btn class="btn btn-danger" style="background:Red" required>Cancelar</btn></a>
+            <input for="formCirugia" type="submit" value="Agregar" class="btn btn-success glyphicon glyphicon-plus" style="background: green; margin-left: 50px"> <br /> <br />
+        </form>
+
+
+    </div>
+</div>
+
+

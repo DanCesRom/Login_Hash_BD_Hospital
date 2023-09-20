@@ -1,0 +1,92 @@
+﻿@model List<CapaDatos.Database.Asistente>
+
+@{
+    ViewBag.Title = "Consultar_Asistente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Consultar Asistentes";
+}
+
+
+@if (TempData["AsistenteRegisterMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["AsistenteRegisterMessage"]
+    </div>
+}
+
+@if (TempData["AsistenteRegisterErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["AsistenteRegisterErrorMessage"]
+    </div>
+}
+
+@if (TempData["AsistenteUpdateMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["AsistenteUpdateMessage"]
+    </div>
+}
+
+@if (TempData["AsistenteDeleteMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["AsistenteDeleteMessage"]
+    </div>
+}
+
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+<p>Total de Usuarios: @Model.Count()</p>
+
+
+<a href="https://localhost:44304/AddInfo/Add_Asistente"> <btn class="btn" style="color:white;  background: black">Agregar Asistente</btn> </a>
+<br />
+<br />
+
+<form action="/Eliminar/DelAsistente/" method="post" id="formUser">
+    <table class="table table-responsive table-hover table-bordered">
+        <thead>
+            <tr class="table-active">
+                <th>ID Asistente</th>
+                <th>Cedula</th>
+                <th>Nombre del Medico</th>
+                <th>Especialidad</th>
+                <th>Status</th>
+                <th>Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var asistente in Model)
+                {
+                    <tr>
+                        <td>@asistente.AsistenteID</td>
+                        <td>@asistente.Cedula_Asistente</td>
+                        <td>@asistente.NombreMedico</td>
+                        <td>@asistente.Especialidad</td>
+                        <td>@asistente.Status</td>
+                        <td>
+                            <div class="btn-group-lg btn-group-sm">
+                                <a href="/Editar/Editar_Asistente?id=@asistente.AsistenteID&cedula=@asistente.Cedula_Asistente&nombre=@asistente.NombreMedico&especialidad=@asistente.Especialidad&status=@asistente.Status" class="btn btn-primary">Edit</a>
+                                <button type="submit" name="id" value="@asistente.AsistenteID" class="btn btn-danger" style="margin-left:10px">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="6">
+                        <div>
+                            No Users Available at this moment!
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>

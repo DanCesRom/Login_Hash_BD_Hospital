@@ -1,0 +1,93 @@
+﻿@model List<CapaDatos.Database.Anestesiologo>
+
+@{
+    ViewBag.Title = "Consultar_Anestesiologo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Consultar Anestesiologos";
+}
+
+
+@if (TempData["AnestesiologoRegisterMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["AnestesiologoRegisterMessage"]
+    </div>
+}
+
+@if (TempData["AnestesiologoRegisterErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["AnestesiologoRegisterErrorMessage"]
+    </div>
+}
+
+
+@if (TempData["AnestesiologoDeleteMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["AnestesiologoDeleteMessage"]
+    </div>
+}
+
+@if (TempData["AnestesiologoUpdateMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["AnestesiologoUpdateMessage"]
+    </div>
+}
+
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+<p>Total de Usuarios: @Model.Count()</p>
+
+
+<a href="https://localhost:44304/AddInfo/Add_Anestesiologo"> <btn class="btn" style="color:white;  background: black">Agregar Anestesiologo</btn> </a>
+<br />
+<br />
+
+<form action="/Eliminar/DelAnestesiologo/" method="post" id="formUser">
+    <table class="table table-responsive table-hover table-bordered">
+        <thead>
+            <tr class="table-active">
+                <th>ID Anestesiologo</th>
+                <th>Cedula</th>
+                <th>Nombre del Medico</th>
+                <th>Especialidad</th>
+                <th>Status</th>
+                <th>Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var anestesiologo in Model)
+                {
+                    <tr>
+                        <td>@anestesiologo.AnestesiologoID</td>
+                        <td>@anestesiologo.Cedula_Anestesiologo</td>
+                        <td>@anestesiologo.NombreMedico</td>
+                        <td>@anestesiologo.Especialidad</td>
+                        <td>@anestesiologo.Status</td>
+                        <td>
+                            <div class="btn-group-lg btn-group-sm">
+                                <a href="/Editar/Editar_Anestesiologo?id=@anestesiologo.AnestesiologoID&cedula=@anestesiologo.Cedula_Anestesiologo&nombre=@anestesiologo.NombreMedico&especialidad=@anestesiologo.Especialidad&status=@anestesiologo.Status" class="btn btn-primary">Edit</a>
+                                <button type="submit" name="id" value="@anestesiologo.AnestesiologoID" class="btn btn-danger" style="margin-left:10px">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="6">
+                        <div>
+                            No Users Available at this moment!
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>

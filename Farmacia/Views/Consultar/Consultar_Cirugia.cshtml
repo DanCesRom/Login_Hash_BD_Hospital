@@ -1,0 +1,99 @@
+﻿@model List<CapaDatos.Database.Cirugia>
+
+@{
+    ViewBag.Title = "Consultar_Cirugia";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Consultar Cirugias";
+}
+
+@if (TempData["CirugiaRegisterMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["CirugiaRegisterMessage"]
+    </div>
+}
+
+@if (TempData["CirugiaRegisterErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["CirugiaRegisterErrorMessage"]
+    </div>
+}
+
+@if (TempData["CirugiaUpdateMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["CirugiaUpdateMessage"]
+    </div>
+}
+
+@if (TempData["CirugiaDeleteMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["CirugiaDeleteMessage"]
+    </div>
+}
+
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+<p>Total de Usuarios: @Model.Count()</p>
+
+
+<a href="https://localhost:44304/AddInfo/Add_Cirugia"> <btn class="btn" style="color:white;  background: black">Agregar Cirugia</btn> </a>
+<br />
+<br />
+
+<form action="/Eliminar/DelCirugia/" method="post" id="formCirugia">
+    <table class="table table-responsive table-hover table-bordered">
+        <thead>
+            <tr class="table-active">
+                <th>ID Cirugia</th>
+                <th>Fecha de Operacion</th>
+                <th>Cirugia Realizada</th>
+                <th>Historial Clinico</th>
+                <th>Quirofano ID</th>
+                <th>Cirujano ID</th>
+                <th>Asistente ID</th>
+                <th>Anestesiologo ID</th>
+                <th>Status</th>
+                <th>Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var cirugia in Model)
+                {
+                    <tr>
+                        <td>@cirugia.CirugiaID</td>
+                        <td>@cirugia.HoraOperacion</td>
+                        <td>@cirugia.CirugiaRealizada</td>
+                        <tds>@cirugia.HistorialClinicoID</tds>
+                        <td>@cirugia.QuirofanoID</td>
+                        <td>@cirugia.CirujanoID</td>
+                        <td>@cirugia.AsistenteID</td>
+                        <td>@cirugia.AnestesiologoID</td>
+                        <td>@cirugia.Status</td>
+                        <td>
+                            <div class="btn-group-lg btn-group-sm">
+                                <a href="/Editar/Editar_Cirugia?id=@cirugia.CirugiaID&tiempo=@cirugia.HoraOperacion&realizada=@cirugia.CirugiaRealizada&historial=@cirugia.HistorialClinicoID&idquirofano=@cirugia.QuirofanoID&idcirujano=@cirugia.CirujanoID&idasistente=@cirugia.AsistenteID&idanestesiologo=@cirugia.AnestesiologoID&status=@cirugia.Status" class="btn btn-primary">Edit</a>
+                                <button type="submit" for="formCirugia" name="id" value="@cirugia.CirugiaID" class="btn btn-danger" style="margin-left:10px">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="6">
+                        <div>
+                            No Users Available at this moment!
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>
